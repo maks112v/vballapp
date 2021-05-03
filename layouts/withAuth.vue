@@ -14,11 +14,16 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import firebase from 'firebase'
 
 export default Vue.extend({
-  data() {
+  data(): {
+    sub: firebase.Unsubscribe | (() => {})
+    isLoading: boolean
+    auth: null | firebase.User
+  } {
     return {
-      sub: null,
+      sub: () => {},
       isLoading: true,
       auth: null,
     }
