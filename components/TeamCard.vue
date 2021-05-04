@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full p-3 rounded bg-gray-50">
     <h1>{{ name }}</h1>
   </div>
 </template>

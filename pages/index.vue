@@ -1,12 +1,10 @@
 <template>
-  <div class="container">
+  <div class="container max-w-2xl px-2 py-5">
     <div v-if="isInLine">
-      <p>You are in line</p>
+      <p>You are {{ isInLine }} line</p>
     </div>
-    <div v-else><JoinLine /></div>
-    <div>
-      <TeamCard v-for="team in line" :key="team.id" v-bind="team" />
-    </div>
+    <JoinLine v-else />
+    <TeamCard v-for="team in line" :key="team.id" v-bind="team" />
   </div>
 </template>
 
@@ -18,11 +16,11 @@ export default Vue.extend({
   head: {
     title: 'Schedule Stuff',
   },
-  data(): { isLoading: boolean; line: any[]; isInLine: boolean } {
+  data(): { isLoading: boolean; line: any[]; isInLine: number | null } {
     return {
       isLoading: false,
       line: [],
-      isInLine: false,
+      isInLine: null,
     }
   },
   created() {
@@ -37,10 +35,13 @@ export default Vue.extend({
   watch: {
     line: function (newLine) {
       const userId = this.$fire.auth.currentUser?.uid
-      console.log(newLine?.indexOf((item: any) => item?.user === userId))
-      this.isInLine = !!newLine?.find((item: any, index) =>
-        item?.user === userId ? index : null
-      )
+      newLine.forEach((item, index) => {
+        console.log(item)
+        if (item?.user === userId) {
+          console.log(index)
+          this.isInLine = index + 1
+        }
+      })
     },
   },
 })
