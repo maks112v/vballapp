@@ -1,15 +1,18 @@
 <template>
-  <div class="card">
-    <h1>Team Name</h1>
+  <div>
+    <h1>{{ name }}</h1>
   </div>
 </template>
 
-<script>
-export default {}
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+  props: ['name'],
+  created() {
+    // console.log(team)
+  },
+})
 </script>
 
-<style scoped>
-.card {
-  @apply bg-green-500;
-}
-</style>
+<style scoped></style>
