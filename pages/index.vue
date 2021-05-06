@@ -1,9 +1,12 @@
 <template>
   <div class="container max-w-2xl px-2 py-5">
-    <div v-if="isInLine">
+    <CurrentGame />
+    <div class="spacer" />
+    <!-- <div v-if="isInLine">
       <p>You are {{ isInLine }} line</p>
-    </div>
-    <JoinLine v-else />
+    </div> -->
+    <JoinLine v-if="!isInLine" />
+    <div class="spacer" />
     <TeamCard v-for="team in line" :key="team.id" v-bind="team" />
   </div>
 </template>
@@ -14,7 +17,7 @@ import Vue from 'vue'
 export default Vue.extend({
   layout: 'withAuth',
   head: {
-    title: 'Schedule Stuff',
+    title: 'Volley Ball',
   },
   data(): { isLoading: boolean; line: any[]; isInLine: number | null } {
     return {
@@ -35,11 +38,13 @@ export default Vue.extend({
   watch: {
     line: function (newLine) {
       const userId = this.$fire.auth.currentUser?.uid
-      newLine.forEach((item, index) => {
+      newLine.forEach((item: any, index: number) => {
         console.log(item)
         if (item?.user === userId) {
           console.log(index)
           this.isInLine = index + 1
+        } else {
+          this.isInLine = null
         }
       })
     },
@@ -47,4 +52,8 @@ export default Vue.extend({
 })
 </script>
 
-<style></style>
+<style scoped>
+.spacer {
+  @apply h-5;
+}
+</style>
