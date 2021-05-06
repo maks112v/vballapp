@@ -11,14 +11,19 @@
   "dependencies": {
     "@nuxtjs/firebase": "^7.5.0",
     "@nuxtjs/vercel-builder": "^0.21.2",
+    "@vue-hero-icons/outline": "^1.7.2",
+    "@vue-hero-icons/solid": "^1.7.2",
     "core-js": "^3.11.3",
     "firebase": "^8.5.0",
-    "nuxt": "^2.15.4"
+    "lodash": "^4.17.21",
+    "nuxt": "^2.15.4",
+    "vue-lottie": "^0.2.1"
   },
   "devDependencies": {
     "@nuxt/types": "^2.15.4",
     "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/tailwindcss": "^4.1.0",
+    "@types/lodash": "^4.14.168",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "postcss": "^8.2.14",

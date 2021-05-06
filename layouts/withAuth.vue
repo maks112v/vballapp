@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div v-if="isLoading">
-      <h1>loading</h1>
-    </div>
+    <OverlayLoading v-if="isLoading" />
     <div v-else-if="auth">
       <Nuxt />
     </div>
@@ -17,6 +15,9 @@ import Vue from 'vue'
 import firebase from 'firebase'
 
 export default Vue.extend({
+  head: {
+    titleTemplate: '%s - Volleyball',
+  },
   data(): {
     sub: firebase.Unsubscribe | (() => {})
     isLoading: boolean

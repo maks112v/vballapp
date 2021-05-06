@@ -17,7 +17,7 @@ import Vue from 'vue'
 export default Vue.extend({
   layout: 'withAuth',
   head: {
-    title: 'Volley Ball',
+    title: 'Home',
   },
   data(): { isLoading: boolean; line: any[]; isInLine: number | null } {
     return {
